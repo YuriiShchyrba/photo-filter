@@ -3,14 +3,17 @@ const doc = document.querySelector('html');
 const btn_reset = document.querySelector('.btn-reset');
 const btn_full = document.querySelector('.fullscreen');
 const btn_next = document.querySelector('.btn-next');
+const btn_load__input = document.querySelector('.btn-load--input');
+const btn_save = document.querySelector('.btn-save');
 const img = document.querySelector('img');
 let parent;
 let output;
-
-let time = new Date();
-time = time.getHours();
+let first = true;
+let current = 0;
 
 function loadImg(){
+    let time = new Date();
+    time = time.getHours();
     let partOfDay = '';
     if( time>=0 && time <= 5){
         partOfDay += 'night';
@@ -27,14 +30,9 @@ function loadImg(){
     return partOfDay;
 }
 
-img.src = "assets/images/"+`${loadImg()}`+"/01.jpg";
 
 btn_next.addEventListener('click',(e)=>{
-    let current = img.src.split('/');
-    current = current.pop().split('.');
-    current = +current[0];
-
-    current +=1;
+    current++;
     if (current >=1 && current <=9 ){
         current = "" + "0" + current;
     } else if(current > 9 && current<=20) {
@@ -84,6 +82,18 @@ btn_reset.addEventListener('click', (e) => {
     });
 });
 
+btn_load__input.addEventListener('click',(e)=>{
+    e.target.value = "";
+});
+
+btn_load__input.addEventListener("change",function(){
+    let data = this.files[0];
+    img.src = URL.createObjectURL(data);
+},false);
+
+
+
+
 inputs.forEach(input => {
     input.addEventListener('click', (e, parent) => {
         parent = e.target.parentElement;
@@ -109,8 +119,6 @@ inputs.forEach(input => {
         input.onmousemove = null;
     });
 });
-
-
 
 
 function changeFilter(element) {
