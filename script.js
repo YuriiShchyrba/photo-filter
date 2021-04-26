@@ -11,7 +11,7 @@ let output;
 let first = true;
 let current = 0;
 
-function loadImg(){
+function checkDay(){
     let time = new Date();
     time = time.getHours();
     let partOfDay = '';
@@ -40,7 +40,7 @@ btn_next.addEventListener('click',(e)=>{
     } else{
         current = "" + "01";
     }
-    img.src = "assets/images/"+`${loadImg()}`+"/" + `${current}`+".jpg";
+    img.src = "assets/images/"+`${checkDay()}`+"/" + `${current}`+".jpg";
 
 });
 
