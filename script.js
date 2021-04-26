@@ -40,8 +40,7 @@ btn_next.addEventListener('click',(e)=>{
     } else{
         current = "" + "01";
     }
-    img.src = "assets/images/"+`${checkDay()}`+"/" + `${current}`+".jpg";
-
+    img.src = "https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/"+`${checkDay()}`+"/"+`${current}`+".jpg";
 });
 
 btn_full.addEventListener('click', (e) => {
